@@ -4,11 +4,11 @@ import * as yup from "yup"
 import { Link } from "react-router-dom"
 import Login from "./Login"
 
-const formSchema = yup.object().shape({
-  username: yup.string().required("Must put Username"),
-  email: yup.string().required("Must have valid Email"),
-  password: yup.string().required("Must have Password")
-})
+// const formSchema = yup.object().shape({
+//   username: yup.string().required("Must put Username"),
+//   email: yup.string().required("Must have valid Email"),
+//   password: yup.string().required("Must have Password")
+// })
 
 const Register = (props) => {
   const [formState, setFormState] = useState({

@@ -1,32 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { axiosWithAuth } from "./axiosWithAuth";
+import React, { useContext } from "react";
 
-import PlantList from "./PlantsList";
+const PlantCard = (props) => {
 
-const Plantsgrab = () => {
-  const [rePlantsList, setrePlantsList] = useState([]);
-  useEffect(() => {
-    getData();
-  }, []);
-
-  
-  const getData = () => {
-    axiosWithAuth()
-      .get("api/plants")
-      .then((response) => {
-    
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
   return (
-    <>
-      <PlantsList Plants={rePlantsList} updatePlants={setrePlantsList} />
-      
-    </>
+  
+    <div className='card'> 
+     plants
+      <h2>{props.plant.name}</h2>
+      <h4>{props.plant.Id}</h4>
+      <h4>{props.plant.Nickname}</h4>
+      <h4>{props.plant.Species}</h4>
+      <h4>{props.plant.h2O}</h4>
+      <img src={props.plant.Image}></img>
+    </div>
   );
 };
 
-export default Plantsgrab;
+export default PlantCard;
