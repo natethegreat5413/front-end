@@ -1,25 +1,17 @@
-import React, { useState } from "react";
-import { axiosWithAuth } from "./axiosWithAuth";
+import React, { useContext } from "react";
+import { plantcontext } from "../contexts/plantcontext";
+import plantCard from "./Plants";
 
-const initialPlant = {
-    id:"",
-  name: "",
-  Nickname:"",
-  Species:"",
-  h2Ofrequency:"",
-  Image:"",
-};
-
-const PlantList = ({ plants, addplants }) => {
-    const [plant, setplant] = useState(initialPlant);
-
-
-
+const PlantsList = () => {
+  const { plants } = useContext(plantcontext);
   return (
-    <div className="plant-wrap">
-plants up
+    <div>
+      plants list
+      {plants.map((plants) => (
+        <plantCard key={plants.id} plants={plants} />
+      ))}
     </div>
   );
 };
 
-export default PlantList;
+export default PlantsList;
