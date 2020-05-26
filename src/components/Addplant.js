@@ -1,17 +1,22 @@
 import React, { useContext, useState } from "react";
 import { plantcontext} from "../contexts/plantcontext"
 import { usercontext} from "../contexts/usercontext"
+import { useParams } from "react-router-dom";
+
 
 
 
 const Addplant = () => {
   const { addplant } = useContext(plantcontext);
+  const { id } = useParams();
   //const { addplant } = useContext(usercontext);
   const [newplant, setNewplant] = useState({
 
+  id: id,  
+  user_id:  parseInt(localStorage.getItem('id')),
   nickname:"",
   species:"",
-  h2O_frequency:"",
+  h2o_frequency:"",
   image_url:"",
   });
 
@@ -52,8 +57,8 @@ const Addplant = () => {
           onChange={handleChanges}
         ></input>
         <input
-          name="h2O_frequency"
-          placeholder="h2O_frequency"
+          name="h2o_frequency"
+          placeholder="h2o_frequency"
           type="text"
           onChange={handleChanges}
         ></input>

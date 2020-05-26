@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import jwtdecode from 'jwt-decode';
 
 const Login = (props) => {
   const [account, setaccount] = useState({
@@ -18,8 +19,10 @@ const Login = (props) => {
     axios
       .post("https://water-my-plants-four.herokuapp.com/auth/login", account)
       .then((response) => {
-        console.log(response);
-        localStorage.setItem("token", response.data.payload);
+        console.log(jwtdecode(response.data.token));
+        let decodedtoken = jwtdecode(response.data.token)
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem('id', decodedtoken.id)
         props.history.push("/PlantsList");
       })
       .catch((err) => {
