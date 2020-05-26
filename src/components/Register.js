@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import * as yup from "yup"
 import { Link } from "react-router-dom"
+import formSchema from './formSchema'
+
 //import Login from "./Login"
 
-// const formSchema = yup.object().shape({
-//   username: yup.string().required("Must put Username"),
-//   email: yup.string().required("Must have valid Email"),
-//   password: yup.string().required("Must have Password")
-// })
+
 
 const Register = (props) => {
+  
   const [formState, setFormState] = useState({
     username: "",
     email: "",
@@ -22,13 +21,36 @@ const Register = (props) => {
     email: "",
     password: "",
   });
+  
+    const validate = e => {
+      e.persist();
+      yup.reach(formSchema, e.target.name)
+      .validate(e.target.value)
+      .then(valid => {
+        setErrors({
+          ...errors,
+          [e.target.name]: ""
+        });
+      })
+
+      .catch(err => {
+        setErrors({
+          ...errors,
+          [e.target.name]: err.errors[0]
+        });
+      });
+    }
 
   const Changehandler = (e) => {
+    e.persist();
+    validate(e)
     setFormState({
       ...formState,
       [e.target.name]: e.target.value,
     });
+    
   };
+
   const Submitform = (e) => {
     e.preventDefault();
     axios
@@ -46,6 +68,7 @@ const Register = (props) => {
 
   return (
     <div>
+      
       <form className='form' onSubmit={Submitform}>
         <h3>Let's get started!</h3>
         <h4>Create your account</h4>
@@ -57,6 +80,9 @@ const Register = (props) => {
             name="username"
             placeholder='Username'
           />
+          {errors.username.length > 0 ? (
+          <p className="errors">{errors.username}</p>
+          ) : null}
         </label><br/>
 
         <label htmlFor="email">
@@ -67,6 +93,9 @@ const Register = (props) => {
             name="email"
             placeholder="Email"
           />
+          {errors.email.length > 0 ? (
+          <p className="errors">{errors.email}</p>
+          ) : null}
         </label><br/>
 
         <label htmlFor="password">
@@ -77,6 +106,9 @@ const Register = (props) => {
           name="password"
           placeholder="Password"
           />
+          {errors.password.length > 0 ? (
+          <p className="errors">{errors.password}</p>
+          ) : null}
         </label><br/>
 
         <button type="submit">Next</button><br/>
@@ -85,6 +117,7 @@ const Register = (props) => {
 
         <Link to="/">Login</Link>
       </form>
+      
     </div>
   );
 };
