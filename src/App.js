@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import axios from "axios";
 import { plantcontext } from "./contexts/plantcontext"
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -40,10 +39,6 @@ function App() {
       });
        
   };  
-  const deleteplant = (plants) => {
-
-    axiosWithAuth().delete(`/plants/${plants.id}`);
-  };
 
   
   return (
