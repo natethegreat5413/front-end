@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     axiosWithAuth()
     .get("/plants").then((res) => {
-      console.log(res.data[0].name);
+      console.log(res)
       setplants(res.data);
     });
   }, []);
@@ -40,9 +40,9 @@ function App() {
       });
        
   };  
-  const deleteplant = (color) => {
+  const deleteplant = (plants) => {
 
-    axiosWithAuth().delete(`plants/${plants.id}`);
+    axiosWithAuth().delete(`/plants/${plants.id}`);
   };
 
   
@@ -52,8 +52,8 @@ function App() {
       <div className="App">
         <Route exact path="/" component={Login} />
         <Route exact path="/Register" component={Register} />
-        <Route path="/PlantsList" component={PlantsList} />{/* PrivateRoute */}
-        <Route path="/Addplant" component={Addplant} />{/* PrivateRoute */}
+        <PrivateRoute path="/PlantsList" component={PlantsList} />{/* PrivateRoute */}
+        <PrivateRoute path="/Addplant" component={Addplant} />{/* PrivateRoute */}
       </div>
     </Router>
     </plantcontext.Provider>

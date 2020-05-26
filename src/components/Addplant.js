@@ -1,17 +1,22 @@
 import React, { useContext, useState } from "react";
-import { plantcontext } from "../contexts/plantcontext"
+import { plantcontext} from "../contexts/plantcontext"
+import { usercontext} from "../contexts/usercontext"
+
 
 
 const Addplant = () => {
   const { addplant } = useContext(plantcontext);
+  //const { addplant } = useContext(usercontext);
   const [newplant, setNewplant] = useState({
-    id:"",
-  name: "",
-  Nickname:"",
-  Species:"",
-  h2Ofrequency:"",
-  Image:"",
+
+  nickname:"",
+  species:"",
+  h2O_frequency:"",
+  image_url:"",
   });
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addplant(newplant);
@@ -20,11 +25,14 @@ const Addplant = () => {
 
 
   const handleChanges = (e) => {
-    const plant = e.target.name;
+    const plants = e.target.name;
+   
+
     setNewplant({
       ...newplant,
-      [plant]: e.target.value,
-      id: Date.now(),
+      [plants]: e.target.value,
+      // user_id:Date.now(),
+      // id: Date.now(),
     });
   };
 
@@ -33,31 +41,25 @@ const Addplant = () => {
       <form>
         <input
           type="text"
-          name="name"
-          placeholder="name"
+          name="nickname"
+          placeholder=" nickname"
           onChange={handleChanges}
         ></input>
         <input
-          type="text"
-          name="Nickname"
-          placeholder=" Nickname"
-          onChange={handleChanges}
-        ></input>
-        <input
-          name="Species"
-          placeholder="Species"
+          name="species"
+          placeholder="species"
           type="text"
           onChange={handleChanges}
         ></input>
         <input
-          name="h2Ofrequency"
-          placeholder="h2O frequency"
+          name="h2O_frequency"
+          placeholder="h2O_frequency"
           type="text"
           onChange={handleChanges}
         ></input>
         <input
-          name="Image"
-          placeholder="Image"
+          name="image_url"
+          placeholder="image_url"
           type="text"
           onChange={handleChanges}
         ></input>

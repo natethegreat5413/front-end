@@ -16,11 +16,11 @@ const Login = (props) => {
   const Submitform = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/login", account)
+      .post("https://water-my-plants-four.herokuapp.com/auth/login", account)
       .then((response) => {
         console.log(response);
         localStorage.setItem("token", response.data.payload);
-        props.history.push("/plants");
+        props.history.push("/PlantsList");
       })
       .catch((err) => {
         console.log(err);
@@ -39,6 +39,7 @@ const Login = (props) => {
           type="text"
           name="username"
           placeholder="Username"
+          onChange={Changehandler}
           />
         </label><br/>
 
@@ -48,10 +49,11 @@ const Login = (props) => {
           type="text"
           name="password"
           placeholder="Password"
+          onChange={Changehandler}
           />
         </label>
 
-        <button>Next</button>
+        <button type="submit">Next</button>
 
         <h4>Not registered yet?  Register Now!</h4>
 

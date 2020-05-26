@@ -1,16 +1,20 @@
 import React, { useContext } from "react";
 import { plantcontext } from "../contexts/plantcontext";
-import plantCard from "./Plants";
+import PlantCard from "./Plants";
+import { Link } from "react-router-dom";
 
 const PlantsList = () => {
-  const { plants } = useContext(plantcontext);
+  const { plants, deleteplant } = useContext(plantcontext);
   return (
     <div>
       plants list
       {plants.map((plants) => (
-        <plantCard key={plants.id} plants={plants} />
+        <PlantCard key={plants.user_id} plants={plants} deleteplant={deleteplant} />
       ))}
+      
+      <Link to="/Addplant">add new plant</Link>
     </div>
+    
   );
 };
 
