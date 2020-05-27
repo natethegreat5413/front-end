@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as yup from "yup"
 import { Link } from "react-router-dom"
@@ -9,6 +9,8 @@ import formSchema from './formSchema'
 
 
 const Register = (props) => {
+
+  const [buttonDisabled, setButtonDisabled] = useState(true)
   
   const [formState, setFormState] = useState({
     username: "",
@@ -21,6 +23,12 @@ const Register = (props) => {
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    formSchema.isValid(formState).then(valid => {
+      setButtonDisabled(!valid);
+    });
+  }, [formState]);
   
     const validate = e => {
       e.persist();
@@ -111,7 +119,7 @@ const Register = (props) => {
           ) : null}
         </label><br/>
 
-        <button type="submit">Next</button><br/>
+        <button disabled={buttonDisabled} type="submit">Next</button><br/>
 
         <h4>Already have an Account? Login Here!</h4>
 
