@@ -2,10 +2,12 @@ import React, { useContext, useState } from 'react';
 import { plantcontext } from '../contexts/plantcontext';
 import { usercontext } from '../contexts/usercontext';
 import { useParams } from 'react-router-dom';
+import { Route, useHistory } from 'react-router-dom';
 
 const Addplant = () => {
     const { addplant } = useContext(plantcontext);
     const { id } = useParams();
+    const history = useHistory();
     //const { addplant } = useContext(usercontext);
     const [newplant, setNewplant] = useState({
         id: id,
@@ -19,6 +21,8 @@ const Addplant = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         addplant(newplant);
+        history.push('/PlantsList')
+        window.location.reload(false);
     };
 
     const handleChanges = (e) => {
