@@ -30,20 +30,20 @@ const PlantCard = (props) => {
             })
             .catch((err) => console.log(err));
     };
-    const updatePlant = () => {
-        axiosWithAuth()
-            .put(`/plants/${props.plant.id}`, {
-                //value_id: item.Value_Id,
-                // top_three: true
-            })
+    // const updatePlant = () => {
+    //     axiosWithAuth()
+    //         .put(`/plants/${props.plant.id}`, {
+    //             //value_id: item.Value_Id,
+    //             // top_three: true
+    //         })
 
-            .then((res) => {
-                console.log(res);
-                history.push('/PlantsList');
-                window.location.reload(false);
-            })
-            .catch((err) => console.log(err));
-    };
+    //         .then((res) => {
+    //             console.log(res);
+    //             history.push('/PlantsList');
+    //             window.location.reload(false);
+    //         })
+    //         .catch((err) => console.log(err));
+    // };
     return (
         <div className='card'>
             {/* <h4>plant id{props.plant.id}</h4> */}

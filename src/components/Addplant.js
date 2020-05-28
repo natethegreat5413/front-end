@@ -21,7 +21,7 @@ const Addplant = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         addplant(newplant);
-        history.push('/PlantsList')
+        history.push('/PlantsList');
         window.location.reload(false);
     };
 
