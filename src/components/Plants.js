@@ -55,10 +55,10 @@ const PlantCard = (props) => {
             <button
                 id='water'
                 onClick={() => {
-                    let date = moment().add(`${props.plant.h2o_frequency}`, 'days').calendar();
+                    let date = moment().add(`${props.plant.h2o_frequency}`, 'days').calendar()
                     axiosWithAuth()
                         .put(`/plants/${props.plant.id}`, {
-                            isWatered: date,
+                            isWatered: date
                         })
                         .then((res) => {
                             console.log(res);
