@@ -72,7 +72,7 @@ const Register = (props) => {
       .then((response) => {
         console.log(response);
         localStorage.setItem("token", response.data.payload);
-        props.history.push("/PlantsList");
+        props.history.push("/");
       })
       .catch((err) => {
         console.log(err);
