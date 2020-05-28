@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "bootstrap": "^3.4.1",
+    "i": "^0.3.6",
     "jwt-decode": "^2.2.0",
     "purecss": "^2.0.3",
     "react": "^16.13.1",

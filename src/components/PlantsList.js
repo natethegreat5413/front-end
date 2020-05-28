@@ -12,7 +12,7 @@ const PlantsList = () => {
     return (
         <div className='list'>
              <div className="wrapper">
-            plants list
+           
             {plants.map((plant) => (
                 <PlantCard
                     key={plant.id}
@@ -20,7 +20,7 @@ const PlantsList = () => {
                 />
             ))}
            </div>
-            <Link to='/Addplant'>add new plant</Link>
+            <Link id="add" to='/Addplant'>add new plant</Link>
 
         </div>
         

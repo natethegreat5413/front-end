@@ -116,3 +116,39 @@ button{
 }
 
 
+.card{
+  padding: 20px;
+  margin: 20px;
+  background-color: lightgreen;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+}
+.wrapper{
+  display: flex;
+  flex-wrap: wrap;
+}
+#water{
+margin-bottom: 30px;
+background-color: darkblue;
+background-image: linear-gradient(to right, darkblue, lightblue);
+}
+#del{
+
+background-color: red;
+background-image: linear-gradient(to right, red, crimson);
+}
+#add{
+  text-align: center;
+  padding: 20px;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+}
+#plimg{
+  height: 220px;
+  margin-bottom: 20px;
+}
