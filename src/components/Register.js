@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import * as yup from "yup"
-import { Link } from "react-router-dom"
-import formSchema from './formSchema'
+import * as yup from "yup";
+import { Link } from "react-router-dom";
+import formSchema from './formSchema';
+// import '../components/';
+
 
 //import Login from "./Login"
+
+///////STYLES//////////
+
 
 
 
 const Register = (props) => {
+  
 
   const [buttonDisabled, setButtonDisabled] = useState(true)
   
@@ -75,14 +81,17 @@ const Register = (props) => {
   };
 
   return (
-    <div>
-      
-      <form className='form' onSubmit={Submitform}>
+    <div className="Register">
+    <div className="rWrap">
+      <form class="pure-form pure-form-stacked" onSubmit={Submitform}>
+        <fieldset>
         <h3>Let's get started!</h3>
         <h4>Create your account</h4>
-        <label htmlFor="username">
+        <label for="stacked-username">
           Username
+        </label>
           <input
+          id="input"
           onChange={Changehandler}
             type="text"
             name="username"
@@ -91,11 +100,14 @@ const Register = (props) => {
           {errors.username.length > 0 ? (
           <p className="errors">{errors.username}</p>
           ) : null}
-        </label><br/>
+        
 
-        <label htmlFor="email">
+        <label for="stacked-email">
           Email
+        </label>  
           <input
+          id="input"
+          className="input"
           onChange={Changehandler}
             type="text"
             name="email"
@@ -104,11 +116,13 @@ const Register = (props) => {
           {errors.email.length > 0 ? (
           <p className="errors">{errors.email}</p>
           ) : null}
-        </label><br/>
+        
 
-        <label htmlFor="password">
+        <label for="stacked-password">
           Password
-          <input
+        </label>
+          <input 
+          id="input"
           onChange={Changehandler}
           type="password"
           name="password"
@@ -117,16 +131,21 @@ const Register = (props) => {
           {errors.password.length > 0 ? (
           <p className="errors">{errors.password}</p>
           ) : null}
-        </label><br/>
+        
+        
 
-        <button disabled={buttonDisabled} type="submit">Next</button><br/>
+        
+          <button disabled={buttonDisabled} type="submit">Next</button><br/>
+        
 
         <h4>Already have an Account? Login Here!</h4>
 
-        <Link to="/">Login</Link>
+        <Link to="/" id="login">Login</Link>
+        </fieldset>
       </form>
       
     </div>
+  </div>
   );
 };
 

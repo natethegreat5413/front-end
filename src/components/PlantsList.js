@@ -10,7 +10,8 @@ const PlantsList = () => {
     const { plants } = useContext(plantcontext);
 
     return (
-        <div>
+        <div className='list'>
+             <div className="wrapper">
             plants list
             {plants.map((plant) => (
                 <PlantCard
@@ -18,8 +19,11 @@ const PlantsList = () => {
                     plant={plant}
                 />
             ))}
+           </div>
             <Link to='/Addplant'>add new plant</Link>
+
         </div>
+        
     );
 };
 

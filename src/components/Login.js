@@ -32,37 +32,45 @@ const Login = (props) => {
   };
   
   return (
-    <div>
-      <form className='form' onSubmit={Submitform}>
+    <div className='Login'>
+    <div className='lWrap'>
+      <form class="pure-form pure-form-stacked" onSubmit={Submitform}>
+        <fieldset>
         <h3>Welcome back!</h3>
         <h4>Log into your account</h4>
-        <label htmlFor="username">
+        <label for="stacked-username">
           Username
+        </label>  
           <input
+          id="input"
           type="text"
           name="username"
           placeholder="Username"
           onChange={Changehandler}
           />
-        </label><br/>
+        <br/>
 
-        <label htmlFor="password">
+        <label for="stacked-password">
           Password
+          </label>
           <input
+          id="input"
           type="text"
           name="password"
           placeholder="Password"
           onChange={Changehandler}
           />
-        </label>
+        
 
         <button type="submit">Next</button>
 
         <h4>Not registered yet?  Register Now!</h4>
 
-        <Link to="/Register">Register</Link>
+        <Link to="/Register" id='registerButton'>Register</Link>
+        </fieldset>
       </form>
     </div>
+  </div>
   );
 };
 
