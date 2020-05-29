@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
 
 .pure-form{
   position: absolute;
@@ -6,7 +7,7 @@
   width: min-content;
   text-align: center;
 }
-/****Login*****/
+
 .errors{
   color: red;
   font-size: small;
@@ -44,14 +45,7 @@ button{
   cursor: pointer;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-/* .pure-form{
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    text-align: center;
-    margin-top: 40%;
-    margin-left: 550px
-} */
+
 .Register{
   height: 100vh;
     background-image: url(./components/plants.jpg);
@@ -59,17 +53,7 @@ button{
     background-attachment: fixed;
     background-size: cover;
 }
-/********LOGIN*********/
-/* .lWrap{
-  width: 200px;
-  height: 60%;
-  background-color: rgb(241, 238, 238);
-  opacity: 0.75;
-  display: flex;
-  flex-direction: column;
-  font-family: "Nunito Sans", sans-serif;
-  padding: 2% 5% 5%;
-} */
+
 #registerButton{
   text-decoration: none;
   width: 95px;
@@ -98,6 +82,7 @@ button{
 /*********AddPlant********/
 .add{
   margin-top: 10%;
+  border-radius: 8px;
 }
 .plantWrap{
     /* background: url(./components/pawel-czerwinski-lWBZ01XRRoI-unsplash.jpg); */
@@ -116,11 +101,13 @@ button{
 .card{
   padding: 20px;
   margin: 20px;
-  background-color: lightgreen;
+  background-color: rgb(132, 226, 136);
   width: 200px;
   display: flex;
   flex-direction: column;
   border-radius: 6px;
+  opacity:.9
+
 }
 .needwater{
   border: red solid 6px;
@@ -142,11 +129,13 @@ button{
 margin-bottom: 30px;
 background-color: darkblue;
 background-image: linear-gradient(to right, darkblue, lightblue);
+box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 }
 #del{
 
 background-color: red;
 background-image: linear-gradient(to right, red, crimson);
+box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 }
 #add{
   text-align: center;
@@ -156,6 +145,7 @@ background-image: linear-gradient(to right, red, crimson);
   justify-content: center;
   color: #fff;
   text-decoration: none;
+  
 }
 #plimg{
   height: 220px;
@@ -165,10 +155,25 @@ background-image: linear-gradient(to right, red, crimson);
   margin-top: 20px;
   margin-bottom: 20px;
 }
+#input:focus {
+  outline: none;
+  border: 2px solid;
+  border-color: rgb(157, 255, 0);
+}
 h4{
   color: #054b2a;
-  
+  font-weight: bold;
+  font-family: 'Comfortaa', cursive;
 }
 h3{
   color: blue;
+  font-family: 'Comfortaa', cursive;
+}
+
+.list{
+    height: 100vh;
+    background-image: url(./components/pawel-czerwinski-lWBZ01XRRoI-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
