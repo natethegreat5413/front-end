@@ -73,9 +73,9 @@ const PlantCard = (props) => {
      
             {/* <h4>plant id{props.plant.id}</h4> */}
             {/* <h4>{props.plant.user_id}</h4> */}
-            <h4>name : {props.plant.nickname}</h4>
-            <h4>species : {props.plant.species}</h4>
-            <h4>water every  : {props.plant.h2o_frequency}days</h4>
+            <h4>Name : {props.plant.nickname}</h4>
+            <h4>Species : {props.plant.species}</h4>
+            <h4>Water every  : {props.plant.h2o_frequency} days</h4>
             <img id='plimg' src={props.plant.image_url}></img>
             <h3>Next watering date</h3>
       
