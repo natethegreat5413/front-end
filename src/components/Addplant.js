@@ -30,7 +30,7 @@ const Addplant = () => {
         user_id: parseInt(localStorage.getItem('id')),
         nickname: '',
         species: '',
-        h2o_frequency: '10',
+        h2o_frequency: '',
         image_url: '',
     });
 

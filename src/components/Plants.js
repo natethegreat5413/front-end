@@ -3,6 +3,7 @@ import { axiosWithAuth } from './axiosWithAuth';
 import { plantcontext } from '../contexts/plantcontext';
 import { Route, useHistory } from 'react-router-dom';
 import moment from 'moment';
+import { date, string } from 'yup';
 //  const deleteplant = (plants) => {
 //   axiosWithAuth().delete(`plants/${plants.user_id}`);
 //  }
@@ -43,15 +44,45 @@ const PlantCard = (props) => {
     //             window.location.reload(false);
     //         })
     //         .catch((err) => console.log(err));
-    // };
+    // };    
+
+// let datenow = date.now; 
+//console.log(datenow)
+//let millisecondsnow = datenow.getTime() 
+//let datewater = 
+//console.log(datewater)
+//let millisecondswater = datewater.getTime()
+
+// for (let i = 0; props.plant.length > i; i++){
+  
+//   } 
+    //console.log(props.plant.isWatered.getUTCHours())
+   const format = moment.utc( props.plant.isWatered ).format('MM/DD/YYYY')
+   // var proposedDate = newhours + props.plant.isWatered;
+//     var isValidDate = moment(proposedDate).isValid();
+//     var momentDate = moment(proposedDate)
+// var hour = momentDate.hours();
+// var minutes = momentDate.minutes();
+// var seconds = momentDate.seconds();
+// console.log(momentDate.format("YYYY-MM-DD hh:mm:ss A Z"));
+// console.log(newhours)
+//let millisecondswater = format.getTime()
+//<div className={ props.plant.isWatered > date.now ? "needwater":'card'}>
     return (
         <div className='card'>
+     
             {/* <h4>plant id{props.plant.id}</h4> */}
             {/* <h4>{props.plant.user_id}</h4> */}
-            <h4>{props.plant.nickname}</h4>
-            <h4>{props.plant.species}</h4>
-            <h4>{props.plant.h2o_frequency}</h4>
+            <h4>name : {props.plant.nickname}</h4>
+            <h4>species : {props.plant.species}</h4>
+            <h4>water every  : {props.plant.h2o_frequency}days</h4>
             <img id='plimg' src={props.plant.image_url}></img>
+            <h3>Next watering date</h3>
+      
+    <h3>{format}</h3>
+    {/* <h4>{millisecondswater}</h4> */}
+   
+    
             <button
                 id='water'
                 onClick={() => {
@@ -59,6 +90,7 @@ const PlantCard = (props) => {
                     axiosWithAuth()
                         .put(`/plants/${props.plant.id}`, {
                             isWatered: date
+
                         })
                         .then((res) => {
                             console.log(res);
