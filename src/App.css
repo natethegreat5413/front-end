@@ -12,7 +12,7 @@
   font-size: small;
 }
 button{
-  width: 80px;
+  width: 180px;
   display: inline-block;
   padding: 8px 11px;
   font-size: 1.2rem;
@@ -122,6 +122,17 @@ button{
   flex-direction: column;
   border-radius: 6px;
 }
+.needwater{
+  border: red solid 6px;
+  padding: 20px;
+  margin: 20px;
+  background-color: lightgreen;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+}
+
 
 .wrapper{
   display: flex;
@@ -153,4 +164,11 @@ background-image: linear-gradient(to right, red, crimson);
 #input{
   margin-top: 20px;
   margin-bottom: 20px;
+}
+h4{
+  color: #054b2a;
+  
+}
+h3{
+  color: blue;
 }

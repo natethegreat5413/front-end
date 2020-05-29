@@ -85,7 +85,7 @@ const Register = (props) => {
     <div className="rWrap">
       <form class="pure-form pure-form-stacked" onSubmit={Submitform}>
         <fieldset>
-        <h3>Let's get started!</h3>
+        <h4>Let's get started!</h4>
         <h4>Create your account</h4>
         <label for="stacked-username">
           Username
