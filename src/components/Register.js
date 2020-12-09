@@ -1,74 +1,57 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
-import * as yup from "yup";
 import { Link } from "react-router-dom";
-import formSchema from './formSchema';
-// import '../components/';
+import {
+  Card,
+  Form,
+  Input,
+  Tooltip,
+  Button,
+  AutoComplete,
+} from 'antd';
+import '../styles/Register.css'
+import { QuestionCircleOutlined } from '@ant-design/icons';
+const AutoCompleteOption = AutoComplete.Option;
 
-
-//import Login from "./Login"
-
-///////STYLES//////////
-
-
-
+const formItemLayout = {
+  labelCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 8,
+    },
+  },
+  wrapperCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 16,
+    },
+  },
+};
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
 
 const Register = (props) => {
   
+  const [form] = Form.useForm();
 
-  const [buttonDisabled, setButtonDisabled] = useState(true)
-  
-  const [formState, setFormState] = useState({
-    username: "",
-    email: "",
-    password: "",
-});
+  const onSubmit = (values) => {
 
-  const [errors, setErrors] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
-  useEffect(() => {
-    formSchema.isValid(formState).then(valid => {
-      setButtonDisabled(!valid);
-    });
-  }, [formState]);
-  
-    const validate = e => {
-      e.persist();
-      yup.reach(formSchema, e.target.name)
-      .validate(e.target.value)
-      .then(valid => {
-        setErrors({
-          ...errors,
-          [e.target.name]: ""
-        });
-      })
-
-      .catch(err => {
-        setErrors({
-          ...errors,
-          [e.target.name]: err.errors[0]
-        });
-      });
-    }
-
-  const Changehandler = (e) => {
-    e.persist();
-    validate(e)
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value,
-    });
-    
-  };
-
-  const Submitform = (e) => {
-    e.preventDefault();
     axios
-      .post("https://water-my-plants-four.herokuapp.com/auth/register", formState)
+      .post("https://plantwatering.herokuapp.com/auth/register", values)
       .then((response) => {
         console.log(response);
         localStorage.setItem("token", response.data.payload);
@@ -81,71 +64,78 @@ const Register = (props) => {
   };
 
   return (
-    <div className="Register">
-    <div className="rWrap">
-      <form class="pure-form pure-form-stacked" onSubmit={Submitform}>
-        <fieldset>
-        <h4>Let's get started!</h4>
-        <h4>Create your account</h4>
-        <label for="stacked-username">
-          Username
-        </label>
-          <input
-          id="input"
-          onChange={Changehandler}
-            type="text"
+    <div className='Register'>
+      <Card title="Register" className='register-card'>
+        <Form
+          {...formItemLayout}
+          form={form}
+          name="register"
+          onFinish={onSubmit}
+          scrollToFirstError
+          className='register-form'
+        >
+          <Form.Item
             name="username"
-            placeholder='Username'
-          />
-          {errors.username.length > 0 ? (
-          <p className="errors">{errors.username}</p>
-          ) : null}
-        
+            
+            label={
+              <span>
+                Username&nbsp;
+                <Tooltip title="What do you want your username to be?">
+                  <QuestionCircleOutlined />
+                </Tooltip>
+              </span>
+            }
+            rules={[
+              {
+                required: true,
+                message: 'Please input your username!',
+                whitespace: true,
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
 
-        <label for="stacked-email">
-          Email
-        </label>  
-          <input
-          id="input"
-          className="input"
-          onChange={Changehandler}
-            type="text"
+          <Form.Item
             name="email"
-            placeholder="Email"
-          />
-          {errors.email.length > 0 ? (
-          <p className="errors">{errors.email}</p>
-          ) : null}
-        
+            label="E-mail"
+            rules={[
+              {
+                type: 'email',
+                message: 'The input is not valid E-mail!',
+              },
+              {
+                required: true,
+                message: 'Please input your E-mail!',
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
 
-        <label for="stacked-password">
-          Password
-        </label>
-          <input 
-          id="input"
-          onChange={Changehandler}
-          type="password"
-          name="password"
-          placeholder="Password"
-          />
-          {errors.password.length > 0 ? (
-          <p className="errors">{errors.password}</p>
-          ) : null}
-        
-        
+          <Form.Item
+            name="password"
+            label="Password"
+            rules={[
+              {
+                required: true,
+                message: 'Please input your password!',
+              },
+            ]}
+            hasFeedback
+          >
+            <Input.Password />
+          </Form.Item>
 
-        
-          <button disabled={buttonDisabled} type="submit">Next</button><br/>
-        
-
-        <h4>Already have an Account? Login Here!</h4>
-
-        <Link to="/" id="login">Login</Link>
-        </fieldset>
-      </form>
-      
+          <Form.Item {...tailFormItemLayout}>
+            <Button type="primary" htmlType="submit" className="register-button">
+              Register
+            </Button>
+            Already have an account? <Link to="/">Login here!</Link>
+          </Form.Item>
+        </Form>
+      </Card>
     </div>
-  </div>
   );
 };
 

@@ -1,0 +1,56 @@
+.Add-Plants {
+    height: 100vh;
+    background-image: url(../images/pawel-czerwinski-lWBZ01XRRoI-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.t-title {
+    margin: 5%;
+}
+
+.MuiTypography-gutterBottom {
+    margin: 5%;
+}
+
+.MuiOutlinedInput-root {
+    margin-bottom: 10px;
+}
+
+.card-title {
+    margin: 5%;
+}
+
+.MuiCard-root {
+    width: 40%;
+    position: absolute;
+    right: 31%;
+    top: 19%;
+}
+
+.MuiButton-root {
+    width: 21%
+}
+
+.errors {
+    color:red
+}
+
+.Add-Plant {
+    width: 40%;
+    margin: 0 auto;
+    position: relative;
+    top: 15%;
+    left: 28%;
+    border: 1px solid grey;
+}
+
+.add-form {
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+}
+
+
+    
