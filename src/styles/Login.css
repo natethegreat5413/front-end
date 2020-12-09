@@ -1,0 +1,23 @@
+.Login{
+    height: 100vh;
+    background-image: url(../images/plants.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+.login-card {
+    border-radius: 20px;
+    width: 32%;
+    left: 32%;
+    top: 25%;
+}
+
+.ant-card-head-title {
+    font-size: 30px;
+}
+
+.login-form-button {
+    margin-right: 10px;
+}
+

@@ -2,22 +2,19 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import jwtdecode from 'jwt-decode';
+import '../styles/Login.css'
+import { Form, Input, Button, Card } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
+
+//// LOGIN FUNCTION ////
 const Login = (props) => {
-  const [account, setaccount] = useState({
-    username: "",
-    password: "",
-  });
-  const Changehandler = (e) => {
-    setaccount({
-      ...account,
-      [e.target.name]: e.target.value,
-    });
-  };
-  const Submitform = (e) => {
-    e.preventDefault();
+
+  //// SUBMIT HANDLER ////
+  const onSubmit = (values) => {
+
     axios
-      .post("https://water-my-plants-four.herokuapp.com/auth/login", account)
+      .post("https://plantwatering.herokuapp.com/auth/login", values)
       .then((response) => {
         console.log(jwtdecode(response.data.token));
         let decodedtoken = jwtdecode(response.data.token)
@@ -32,45 +29,52 @@ const Login = (props) => {
   };
   
   return (
-    <div className='Login'>
-    <div className='lWrap'>
-      <form class="pure-form pure-form-stacked" onSubmit={Submitform}>
-        <fieldset>
-        <h4>Welcome back!</h4>
-        <h4>Log into your account</h4>
-        <label for="stacked-username">
-          Username
-        </label>  
-          <input
-          id="input"
-          type="text"
+  <div className='Login'>
+    <Card title="Login" className='login-card'>
+      <Form
+        name="normal_login"
+        className="login-form"
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onSubmit}
+      >
+        <Form.Item
           name="username"
-          placeholder="Username"
-          onChange={Changehandler}
-          />
-        <br/>
-
-        <label for="stacked-password">
-          Password
-          </label>
-          <input
-          id="input"
-          type="text"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your Username!',
+            },
+          ]}
+        >
+          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+        </Form.Item>
+        <Form.Item
           name="password"
-          placeholder="Password"
-          onChange={Changehandler}
+          rules={[
+            {
+              required: true,
+              message: 'Please input your Password!',
+            },
+          ]}
+        >
+          <Input
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            type="password"
+            placeholder="Password"
           />
-        
+        </Form.Item>
 
-        <button type="submit">Next</button>
-
-        <h4>Not registered yet?  Register Now!</h4>
-
-        <Link to="/Register" id='registerButton'>Register</Link>
-        </fieldset>
-      </form>
+        <Form.Item>
+          <Button type="primary" htmlType="submit" className="login-form-button">
+            Log in
+          </Button>
+          Or <Link to="/Register">register now!</Link>
+        </Form.Item>
+      </Form>
+    </Card>
     </div>
-  </div>
   );
 };
 

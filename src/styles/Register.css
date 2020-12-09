@@ -1,0 +1,23 @@
+.Register{
+    height: 100vh;
+      background-image: url(../images/plants.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+  }
+
+.register-card {
+    border-radius: 20px;
+    width: 32%;
+    left: 32%;
+    top: 25%;
+}
+
+.register-form {
+    position: relative;
+    right: 25px;
+}
+
+.register-button {
+    margin-right: 20px
+}

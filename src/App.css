@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
 
-.pure-form{
+/* .pure-form{
   position: absolute;
   top: 25%;
   left: 43%;
@@ -80,24 +80,26 @@ button{
 }
 
 /*********AddPlant********/
+/*
 .add{
   margin-top: 10%;
   border-radius: 8px;
 }
 .plantWrap{
     /* background: url(./components/pawel-czerwinski-lWBZ01XRRoI-unsplash.jpg); */
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     /* Set rules to fill background */
-    min-height: 100%;
-    min-width: 1024px;
+    /* min-height: 100%;
+    min-width: 1024px; */
     /* Set up proportionate scaling */
-    width: 100%;
+    /* width: 100%; */
     /* Set up positioning */
-    position: fixed;
-}
-
+    /* position: fixed; */
+/* } */
+ 
+/*
 .card{
   padding: 20px;
   margin: 20px;
@@ -176,4 +178,4 @@ h3{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-}
+} */
